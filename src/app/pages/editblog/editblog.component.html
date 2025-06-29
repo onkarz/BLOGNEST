@@ -1,0 +1,64 @@
+<body>
+  <section class="container">
+    <header>Update Your Blog</header>
+    <form action="#" class="form">
+      <div class="container" style="text-align: center">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <div *ngIf="blogDetails.imageUrl">
+          <h3>Selected Image:</h3>
+          <img
+            style="height: 200px; width: 200px; text-align: center"
+            [src]="blogDetails.imageUrl"
+            alt="Selected Image"
+            class="preview"
+          />
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label>Title</label>
+        <input
+          [(ngModel)]="blogDetails.title"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Enter title"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <label>Description</label>
+        <input
+          [(ngModel)]="blogDetails.description"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Enter Description"
+          required
+        />
+      </div>
+
+      <div class="input-box">
+        <label>Category</label>
+        <input
+          [(ngModel)]="blogDetails.category"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Enter Category"
+          required
+        />
+      </div>
+
+      <div class="input-box address">
+        <label>Author</label>
+        <input
+          type="text"
+          [(ngModel)]="blogDetails.author"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Enter Author Name"
+          required
+        />
+      </div>
+
+      <button (click)="update()">Update Blog</button>
+    </form>
+  </section>
+</body>

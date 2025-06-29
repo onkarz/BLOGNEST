@@ -1,0 +1,44 @@
+<body>
+  <nav>
+    <div class="heading">
+      <h4 style="cursor: pointer;" (click)="home()">BLOGNEST</h4>
+    </div>
+
+    <ul class="nav-links">
+            <li><a (click)="create()">Create</a></li>
+
+      <li><a (click)="users()">Users</a></li>
+      <li><a (click)="blogsByCategory()">Category</a></li>
+      <li><a (click)="profile()">Profile</a></li>
+      <li><a (click)="logOut()">Logout</a></li>
+    </ul>
+  </nav>
+
+
+</body>
+
+
+
+<div class="container">
+  <div style="text-align: center" *ngFor="let user of allUsers" class="card">
+    <img [src]="user.imageUrl" alt="Person" class="card__image" />
+
+    <p class="card__name">{{ user.name }}</p>
+   <div style="text-align: center;">
+     <div style="text-align: center;" class="grid-container">
+      <div class="grid-child-posts">{{ user.email }}</div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-child-posts">{{ user.phone }}</div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-child-posts">{{ user.address }}</div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-child-posts">{{ user.city }}</div>
+    </div>
+   </div>
+
+    <button (click)="viewUser(user)" class="btn draw-border">View</button>
+  </div>
+</div>

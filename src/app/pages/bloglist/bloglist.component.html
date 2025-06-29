@@ -1,0 +1,90 @@
+<body>
+  <nav>
+    <div class="heading">
+      <h4 style="cursor: pointer" (click)="home()">BLOGNEST</h4>
+    </div>
+
+    <ul class="nav-links">
+      <li><a (click)="create()">Create</a></li>
+
+      <li><a (click)="users()">Users</a></li>
+      <li><a (click)="blogsByCategory()">Category</a></li>
+      <li><a (click)="profile()">Profile</a></li>
+      <li><a (click)="logOut()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="card-list">
+    <a *ngFor="let blog of allBlogs" class="card-item">
+      <img [src]="blog.imageUrl" alt="" />
+      <span class="developer">{{ blog.title }}</span>
+      <p style="margin-top: 10px">{{ blog.description }}</p>
+      <h5 style="margin-top: 5px">{{ blog.author }}</h5>
+
+      <h6
+        style="
+          margin-top: 10px;
+          border: 2px solid;
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+          font-size: 12px;
+          background-color: cyan;
+        "
+      >
+        {{ blog.category }}
+      </h6>
+
+      <div
+        style="display: flex; justify-content: space-between; margin-top: 30px"
+      >
+        <button
+          style="
+            width: auto;
+            background-color: chartreuse;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          (click)="saveforlater(blog)"
+          *ngIf="showBlog || blog.userId != loggedInUser.id"
+        >
+          Save For Later
+        </button>
+        <button
+          style="
+            width: 80px;
+            background-color: chartreuse;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          (click)="edit(blog.id)"
+          *ngIf="blog.userId == loggedInUser.id"
+        >
+          Edit
+        </button>
+        <button
+          style="
+            width: 80px;
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          (click)="delete(blog.id)"
+          *ngIf="blog.userId == loggedInUser.id"
+        >
+          Delete
+        </button>
+      </div>
+    </a>
+  </div>
+</body>

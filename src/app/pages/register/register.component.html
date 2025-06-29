@@ -1,0 +1,48 @@
+ <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="#" class="form">
+
+            <div class="container" style="text-align: center;">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      <div *ngIf="imageUrl">
+        <h3>Selected Image:</h3>
+        <img style="height: 200px; width: 200px; text-align: center;" [src]="imageUrl" alt="Selected Image" class="preview" />
+      </div>
+    </div>
+
+        <div class="input-box">
+          <label>Full Name</label>
+          <input [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter full name" required />
+        </div>
+        <div class="input-box">
+          <label>Email Address</label>
+          <input [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter email address" required />
+        </div>
+
+         <div class="input-box">
+          <label>Password</label>
+          <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Enter Password" required />
+        </div>
+
+        <div class="input-box address">
+          <label>Phone</label>
+          <input type="number" [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}" placeholder="Enter Phone Number" required />
+
+        </div>
+
+        <div class="input-box address">
+          <label>Address</label>
+          <input [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter Address" required />
+
+        </div>
+
+         <div class="input-box address">
+          <label>City</label>
+          <input type="text" [(ngModel)]="user.city" [ngModelOptions]="{standalone: true}" placeholder="Enter City" required />
+
+        </div>
+        <button (click)="submit()" >Submit</button>
+      </form>
+    </section>
+  </body>
