@@ -47,7 +47,7 @@ export class DashboardComponent {
   }
 
   getSavedBlogs() {
-    this.blog.getSavedBlogs().subscribe((data: any) => {
+    this.blog.getAllSavedBlogs().subscribe((data: any) => {
       console.log(data);
 
       this.savedBlogs = data;

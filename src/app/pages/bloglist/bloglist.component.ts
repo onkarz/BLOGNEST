@@ -16,6 +16,7 @@ export class BloglistComponent {
   showEdit: boolean = true;
 
   showBlog: boolean = false;
+  savedBlogIds: any;
 
   constructor(private blog: BlogService, private router: Router) {
     this.loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '');
@@ -68,18 +69,21 @@ export class BloglistComponent {
     this.router.navigate(['/editblog', id]);
   }
 
-  saveforlater(data: any) {
-    let dataModel = {
-      loggedInUserId: this.loggedInUser.id,
-      blog: data,
-    };
+saveForLater(id: any, data:any) {
 
-    this.blog.postSaveForLaterBlog(dataModel).subscribe((data: any) => {
-      console.log(data);
-      alert('Blog saved for later successfully');
-      this.showBlog = false;
-    });
-  }
+
+  let dataModel = {
+    userId: this.loggedInUser.id,
+    blogId: id,
+    blog: data,
+  };
+
+  this.blog.postSaveForLaterBlog(dataModel).subscribe((res: any) => {
+    alert('Blog saved for later successfully');
+    this.savedBlogIds.add(data.id); // update in real-time
+  });
+}
+
 
   home() {
     this.router.navigate(['/blogList']);

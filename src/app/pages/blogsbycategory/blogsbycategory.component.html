@@ -1,11 +1,11 @@
 <body>
   <nav>
     <div class="heading">
-      <h4 style="cursor: pointer;" (click)="home()">BLOGNEST</h4>
+      <h4 style="cursor: pointer" (click)="home()">BLOGNEST</h4>
     </div>
 
     <ul class="nav-links">
-            <li><a (click)="create()">Create</a></li>
+      <li><a (click)="create()">Create</a></li>
 
       <li><a (click)="users()">Users</a></li>
       <li><a (click)="blogsByCategory()">Category</a></li>
@@ -13,13 +13,10 @@
       <li><a (click)="logOut()">Logout</a></li>
     </ul>
   </nav>
-
-
 </body>
 
-
 <div>
-  <label for="category">Filter by Category: </label>
+  <label for="category">Filter by Category:</label>
   <select id="category" [(ngModel)]="selectedCategory">
     <option *ngFor="let category of categories" [value]="category">
       {{ category }}
@@ -27,10 +24,27 @@
   </select>
 </div>
 
-<div *ngFor="let blog of getFilteredBlogs()">
-  <h2>{{ blog.title }}</h2>
-  <p><strong>Category:</strong> {{ blog.category }}</p>
-  <p>{{ blog.description }}</p>
-  <p>{{ blog.author }}</p>
-  <hr />
+<div class="card-list">
+  <a *ngFor="let blog of getFilteredBlogs()" class="card-item">
+    <span>
+      <img [src]="blog.imageUrl" alt="" />
+      <span class="developer">{{ blog.title }}</span>
+      <p style="margin-top: 10px">{{ blog.description }}</p>
+      <h5 style="margin-top: 5px">{{ blog.author }}</h5>
+
+      <h6
+        style="
+          margin-top: 10px;
+          border: 2px solid;
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+          font-size: 12px;
+          background-color: cyan;
+        "
+      >
+        {{ blog.category }}
+      </h6>
+    </span>
+  </a>
 </div>

@@ -15,62 +15,58 @@
   </nav>
 </body>
 
-<style>
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-  }
-
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-
-  button:hover,
-  a:hover {
-    opacity: 0.7;
-  }
-</style>
-<div>
-  <div style="margin-top: 50px" class="card">
-    <img [src]="loggedInUser.imageUrl" alt="John" />
+<div style="text-align: center">
+  <div
+    style="
+      margin-top: 50px;
+      border: 10px solid black;
+      text-align: center;
+      padding: 20px;
+      width: 400px;
+      border-radius: 10px;
+      margin-left: 550px;
+      border-style: double;
+      border-color: cadetblue;
+    "
+    class="card"
+  >
+    <img
+      style="width: 100px; height: 100px"
+      [src]="loggedInUser.imageUrl"
+      alt="John"
+    />
     <h1>{{ loggedInUser.name }}</h1>
     <p style="margin-top: 10px" class="title">{{ loggedInUser.email }}</p>
     <p style="margin-top: 10px">{{ loggedInUser.address }}</p>
 
     <p style="margin-top: 10px">{{ loggedInUser.city }}</p>
 
-    <p style="margin-top: 10px">
-      <button>{{ loggedInUser.phone }}</button>
-    </p>
+    <h5 style="margin-top: 10px">
+      {{ loggedInUser.phone }}
+    </h5>
   </div>
 </div>
 
-<div class="card-list">
-  <a *ngFor="let blog of allBlogs" class="card-item">
-    <span *ngIf="blog.userId == loggedInUser.id">
+<div
+  style="
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+  "
+>
+  <button (click)="showTabs()">
+    <span class="button_top"> My Blogs </span>
+  </button>
+  <button (click)="showSavedTabs()">
+    <span class="button_top"> My Saved Blogs</span>
+  </button>
+</div>
+
+<div *ngIf="showTab" class="card-list">
+  <a *ngFor="let blog of userBlogs" class="card-item">
+    <span>
       <img [src]="blog.imageUrl" alt="" />
       <span class="developer">{{ blog.title }}</span>
       <p style="margin-top: 10px">{{ blog.description }}</p>
@@ -129,87 +125,22 @@
   </a>
 </div>
 
-<!--
+<div *ngIf="showSavedTab">
+  <div *ngFor="let newSaveBlog of savedBlogs">
+    <div *ngIf="newSaveBlog.userId === loggedInUser.id">
+      <div *ngIf="newSaveBlog">
+        <p><strong>Title:</strong> {{ newSaveBlog.blog.title }}</p>
+        <p><strong>Description:</strong> {{ newSaveBlog.blog.description }}</p>
+        <p><strong>Category:</strong> {{ newSaveBlog.blog.category }}</p>
+        <p><strong>Author:</strong> {{ newSaveBlog.blog.author }}</p>
+        <p><strong>User ID:</strong> {{ newSaveBlog.blog.userId }}</p>
+        <p><strong>Created At:</strong> {{ newSaveBlog.blog.createdAt }}</p>
 
-
-
-<div class="frame">
-  <div class="center">
-    <div class="profile">
-      <div class="image">
-        <img
-          [src]="loggedInUser.imageUrl"
-          width="70"
-          height="70"
-          alt="Jessica Potter"
-        />
+        <div *ngIf="newSaveBlog.blog.imageUrl">
+          <strong>Image:</strong><br />
+          <img [src]="newSaveBlog.blog.imageUrl" width="200" />
+        </div>
       </div>
-
-      <div class="name">{{ loggedInUser.name }}</div>
-      <div class="job">{{ loggedInUser.email }}</div>
-      <div class="job">{{ loggedInUser.address }}</div>
-      <div class="actions">
-        <button class="btn">
-          <div class="job">{{ loggedInUser.city }}</div>
-        </button>
-        <button class="btn">
-          <div class="job">{{ loggedInUser.phone }}</div>
-        </button>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="box">
-        <span class="value">523</span>
-        <span class="parameter">Posts</span>
-      </div>
-      <div class="box">
-        <span class="value">1387</span>
-        <span class="parameter">Likes</span>
-      </div>
-      <div class="box"></div>
     </div>
   </div>
 </div>
-
-<div style="height: 1800px" class="carousel" mask>
-  <article
-    *ngFor="let blog of allBlogs"
-    style="margin-top: 700px; border: none"
-  >
-    <span *ngIf="blog.userId == loggedInUser.id">
-      <img [src]="blog.imageUrl" alt="" />
-      <h2>{{ blog.title }}</h2>
-      <p>{{ blog.description }}</p>
-      <div style="margin-top: 50px">
-        <a href="#">{{ blog.category }}</a>
-        <a style="margin-left: 20px" href="#">{{ blog.author }}</a>
-      </div>
-
-      <div style="margin-top: 50px">
-        <button (click)="edit(blog.id)" *ngIf="blog.userId == loggedInUser.id">
-          Edit
-        </button>
-
-        <button
-          style="margin-left: 20px"
-          (click)="delete(blog.id)"
-          *ngIf="blog.userId == loggedInUser.id"
-        >
-          Delete
-        </button>
-      </div>
-    </span>
-  </article>
-</div>
-
-<div>
-  <div>
-    <h2>{{ newSavedBlogs.title }}</h2>
-    <h2>{{newSavedBlogs.description}}
-    </h2>
-     <h2>{{newSavedBlogs.category}}
-    </h2>
-  </div>
-</div>
--->

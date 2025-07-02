@@ -48,8 +48,7 @@
             font-weight: bold;
             cursor: pointer;
           "
-          (click)="saveforlater(blog)"
-          *ngIf="showBlog || blog.userId != loggedInUser.id"
+          (click)="saveForLater(blog.id, blog)"
         >
           Save For Later
         </button>

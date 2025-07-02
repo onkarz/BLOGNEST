@@ -13,29 +13,45 @@ import { Router } from '@angular/router';
 export class UserprofileComponent {
   loggedInUser: any;
   allBlogs: any;
-
+  showTab!: boolean;
   myBlogs: any;
   savedBlogs: any;
   newSavedBlogs: any = [];
+  userBlogs: any;
+  savedBlogIds!: Set<unknown>;
+  showSavedTab!: boolean;
   constructor(private blogs: BlogService, private router: Router) {
     this.loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '');
 
     console.log('Logged In user che Details', this.loggedInUser);
 
     this.getBlogs();
-    this.getSavedBlogs();
+  }
+
+  ngOnInit() {
+    this.blogs
+      .getSavedBlogsByUser(this.loggedInUser.id)
+      .subscribe((data: any) => {
+        this.savedBlogIds = new Set(data.map((b: any) => b.blogId));
+      });
+
+    this.blogs.getAllSavedBlogs().subscribe((data: any) => {
+      this.savedBlogs = data;
+      console.log(this.savedBlogs);
+    });
   }
 
   getBlogs() {
     this.blogs.getAllBlogs().subscribe((data: any) => {
       console.log(data);
       this.allBlogs = data;
-
-      this.allBlogs.includes((data: any) => {
-        data.blogId === this.loggedInUser.id;
+      console.log(this.allBlogs);
+      this.userBlogs = this.allBlogs.filter((blog: any) => {
+        console.log(blog);
+        return blog.userId === this.loggedInUser.id;
       });
 
-      console.log(this.allBlogs);
+      console.log(this.userBlogs);
     });
   }
 
@@ -51,25 +67,7 @@ export class UserprofileComponent {
     this.router.navigate(['/editblog', id]);
   }
 
-
-  getSavedBlogs(){
-    this.blogs.getSavedBlogs().subscribe((data:any)=>{
-      console.log(data);
-
-      this.savedBlogs = data;
-      console.log(this.savedBlogs);
-
-      this.savedBlogs.forEach((data:any) => {
-          this.newSavedBlogs = data.blog
-          console.log(this.newSavedBlogs);
-      });
-
-    })
-  }
-
-
-
-    profile() {
+  profile() {
     this.router.navigate(['/userprofile']);
   }
 
@@ -97,4 +95,13 @@ export class UserprofileComponent {
     this.router.navigate(['/blogList']);
   }
 
+  showSavedTabs() {
+    this.showTab = false;
+    this.showSavedTab = true;
+  }
+
+  showTabs() {
+    this.showSavedTab = false;
+    this.showTab = true;
+  }
 }
