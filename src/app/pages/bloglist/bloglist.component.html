@@ -14,8 +14,20 @@
     </ul>
   </nav>
 
+  <div class="wrap">
+    <div class="search">
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (input)="searchBlogs()"
+        class="searchTerm"
+        placeholder="Search Blogs by Title"
+      />
+    </div>
+  </div>
+
   <div class="card-list">
-    <a *ngFor="let blog of allBlogs" class="card-item">
+    <a *ngFor="let blog of filteredBlogs" class="card-item">
       <img [src]="blog.imageUrl" alt="" />
       <span class="developer">{{ blog.title }}</span>
       <p style="margin-top: 10px">{{ blog.description }}</p>

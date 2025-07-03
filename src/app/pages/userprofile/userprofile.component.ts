@@ -104,4 +104,15 @@ export class UserprofileComponent {
     this.showSavedTab = false;
     this.showTab = true;
   }
+
+
+  ngAfterContentInit(){
+    this.getBlogs();
+  }
+
+
+  ngAfterContentChecked(){
+    //Checking Content released or not
+    this.getBlogs();
+  }
 }
