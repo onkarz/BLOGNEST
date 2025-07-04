@@ -48,3 +48,20 @@
     </span>
   </a>
 </div>
+
+<!--Attribute Directives-->
+<h2>ngStyle Example</h2>
+<p [ngStyle]="{'color': isActive ? 'green' : 'red', 'font-size': fontSize + 'px'}">
+  This text changes color and size dynamically using ngStyle.
+</p>
+<Br>
+<h2>ngClass Example</h2>
+<p [ngClass]="{'active': isActive, 'error': isError}">
+  This text changes class dynamically using ngClass.
+</p>
+
+<!-- Toggle Buttons -->
+<button (click)="isActive = !isActive">Toggle Active</button>
+<button (click)="isError = !isError">Toggle Error</button>
+<button (click)="fontSize = fontSize + 2">Increase Font Size</button>
+<button (click)="fontSize = fontSize - 2">Decrease Font Size</button>

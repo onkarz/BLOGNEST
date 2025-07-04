@@ -1,15 +1,12 @@
 * {
-
   margin: 0px;
 
   padding: 0px;
 
   box-sizing: border-box;
-
 }
 
 .body-text {
-
   display: flex;
 
   font-family: "Montserrat", sans-serif;
@@ -19,11 +16,9 @@
   justify-content: center;
 
   margin-top: 250px;
-
 }
 
 nav {
-
   display: flex;
 
   justify-content: space-around;
@@ -35,11 +30,9 @@ nav {
   background-color: teal;
 
   font-family: "Montserrat", sans-serif;
-
 }
 
 .heading {
-
   color: white;
 
   text-transform: uppercase;
@@ -47,28 +40,22 @@ nav {
   letter-spacing: 5px;
 
   font-size: 20px;
-
 }
 
 .nav-links {
-
   display: flex;
 
   justify-content: space-around;
 
   width: 30%;
-
 }
 
 .nav-links li {
-
   list-style: none;
   cursor: pointer;
-
 }
 
 .nav-links a {
-
   color: white;
 
   text-decoration: none;
@@ -80,35 +67,25 @@ nav {
   font-size: 14px;
 
   padding: 14px 16px;
-
 }
 
 .nav-links a:hover:not(.active) {
-
   background-color: lightseagreen;
-
 }
 
 .nav-links li a.active {
-
   background-color: #4caf50;
-
 }
-
-
 
 * {
-
   margin: 0px;
 
   padding: 0px;
 
   box-sizing: border-box;
-
 }
 
 .body-text {
-
   display: flex;
 
   font-family: "Montserrat", sans-serif;
@@ -118,11 +95,9 @@ nav {
   justify-content: center;
 
   margin-top: 250px;
-
 }
 
 nav {
-
   display: flex;
 
   justify-content: space-around;
@@ -134,11 +109,9 @@ nav {
   background-color: teal;
 
   font-family: "Montserrat", sans-serif;
-
 }
 
 .heading {
-
   color: white;
 
   text-transform: uppercase;
@@ -146,28 +119,22 @@ nav {
   letter-spacing: 5px;
 
   font-size: 20px;
-
 }
 
 .nav-links {
-
   display: flex;
 
   justify-content: space-around;
 
   width: 30%;
-
 }
 
 .nav-links li {
-
   list-style: none;
   cursor: pointer;
-
 }
 
 .nav-links a {
-
   color: white;
 
   text-decoration: none;
@@ -179,105 +146,98 @@ nav {
   font-size: 14px;
 
   padding: 14px 16px;
-
 }
 
 .nav-links a:hover:not(.active) {
-
   background-color: lightseagreen;
-
 }
 
 .nav-links li a.active {
-
   background-color: #4caf50;
-
 }
-
-
 
 /* Importing Google font - Open Sans */
 
 .card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    max-width: 1250px;
-    margin: 60px auto;
-    padding: 20px;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  max-width: 1250px;
+  margin: 60px auto;
+  padding: 20px;
+  gap: 20px;
 }
 .card-list .card-item {
-    background: #fff;
-    padding: 26px;
-    border-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
-    list-style: none;
-    cursor: pointer;
-    text-decoration: none;
-    border: 2px solid transparent;
-    transition: border 0.5s ease;
+  background: #fff;
+  padding: 26px;
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+  list-style: none;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: border 0.5s ease;
 }
 .card-list .card-item:hover {
-    border: 2px solid #000;
+  border: 2px solid #000;
 }
 .card-list .card-item img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 8px;
-    object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  object-fit: cover;
 }
 .card-list span {
-    display: inline-block;
-    margin-top: 32px;
-    padding: 8px 15px;
-    font-size: 0.75rem;
-    border-radius: 50px;
-    font-weight: 600;
+  display: inline-block;
+  margin-top: 32px;
+  padding: 8px 15px;
+  font-size: 0.75rem;
+  border-radius: 50px;
+  font-weight: 600;
 }
 .card-list .developer {
-    background-color: #F7DFF5;
-    color: #B22485;
+  background-color: #f7dff5;
+  color: #b22485;
 }
 .card-list .designer {
-    background-color: #d1e8ff;
-    color: #2968a8;
+  background-color: #d1e8ff;
+  color: #2968a8;
 }
 .card-list .editor {
-    background-color: #d6f8d6;
-    color: #205c20;
+  background-color: #d6f8d6;
+  color: #205c20;
 }
 .card-item h3 {
-    color: #000;
-    font-size: 1.438rem;
-    margin-top: 28px;
-    font-weight: 600;
+  color: #000;
+  font-size: 1.438rem;
+  margin-top: 28px;
+  font-weight: 600;
 }
 .card-item .arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(-35deg);
-    height: 40px;
-    width: 40px;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 50%;
-    margin-top: 40px;
-    transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-35deg);
+  height: 40px;
+  width: 40px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin-top: 40px;
+  transition: 0.2s ease;
 }
-.card-list .card-item:hover .arrow  {
-    background: #000;
-    color: #fff;
+.card-list .card-item:hover .arrow {
+  background: #000;
+  color: #fff;
 }
 @media (max-width: 1200px) {
-    .card-list .card-item {
-        padding: 15px;
-    }
+  .card-list .card-item {
+    padding: 15px;
+  }
 }
 @media screen and (max-width: 980px) {
-    .card-list {
-        margin: 0 auto;
-    }
+  .card-list {
+    margin: 0 auto;
+  }
 }
 
 /* Center align the container */
@@ -301,3 +261,13 @@ select {
   width: 200px; /* Adjust width as needed */
 }
 
+.active {
+  font-weight: bold;
+  background-color: Yellow;
+}
+
+.error {
+  color: red;
+  border: 1px solid red;
+  padding: 5px;
+}

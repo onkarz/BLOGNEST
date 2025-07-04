@@ -15,6 +15,11 @@ export class BlogsbycategoryComponent {
   allBlogs: any;
   categories!: any[];
   selectedCategory!: string;
+
+  isActive = true;
+  isError = false;
+  fontSize = 20;
+
   constructor(private blog: BlogService, private router: Router) {
     this.getBlogs();
   }
@@ -27,9 +32,10 @@ export class BlogsbycategoryComponent {
     });
   }
 
-  extractCategories() {                    //temp var
+  extractCategories() {
+    //temp var
     const allCategories = this.allBlogs.map((blog: any) => blog.category);
-    console.log("All categories print zale", allCategories);
+    console.log('All categories print zale', allCategories);
     this.categories = ['All', ...new Set(allCategories)]; // Include 'all' for showing all blogs
     console.log(this.categories);
   }
@@ -39,8 +45,7 @@ export class BlogsbycategoryComponent {
       ? this.allBlogs
       : this.allBlogs.filter(
           (blog: any) => blog.category === this.selectedCategory
-        // blogs      =>  blogs.travel === travel
-
+          // blogs      =>  blogs.travel === travel
         );
   }
 
